@@ -1,0 +1,17 @@
+:root {
+  --preferred-font: 'Open Sans', sans-serif;
+  --font-size: 13px;
+  --font-size-normal: var(--font-size);
+  --font-size-big: 16px;
+  --font-weight-thin: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --nav-bg: #ebf1f7;
+  --nav-text: #999;
+  --nav-item-bg: #ebf1f7;
+  --nav-hover-item-text: #89abd1;
+  --nav-hover-item-bg: rgba(255, 255, 255, 0.9);
+  --nav-active-item-text: #3b73b3;
+  --nav-active-item-bg: #fff;
+}

@@ -1,0 +1,53 @@
+@import '../../variables.css';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  background: var(--nav-bg);
+  padding: 6px 17px 0 17px;
+}
+
+.navItem {
+  flex: 1;
+  text-align: center;
+  margin: 0 1px;
+
+  & a {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--nav-text);
+    display: block;
+    padding: 1.7rem 1.2rem;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    background: var(--nav-item-bg);
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--nav-hover-item-text);
+      background: var(--nav-hover-item-bg);
+      box-shadow: 0 4px 0 #fff, 0 0 4px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+
+.navItemActive {
+  color: var(--nav-active-item-text) !important;
+  background: var(--nav-active-item-bg) !important;
+  box-shadow: 0 4px 0 #fff, 0 0 4px rgba(0, 0, 0, 0.16);
+  z-index: 1;
+}
+
+.layoutBody {
+  flex: 1;
+  overflow-y: auto;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
+  z-index: 0;
+}
