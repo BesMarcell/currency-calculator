@@ -6,6 +6,8 @@ import {
 
 export const initialState = {
   entities: [],
+  isCurrenciesLoading: false,
+  error: null,
 };
 
 export default function currencies(state = initialState, action) {
@@ -13,15 +15,19 @@ export default function currencies(state = initialState, action) {
     case GET_CURRENCIES_PENDING:
       return {
         ...state,
+        isCurrenciesLoading: true,
       };
     case GET_CURRENCIES_SUCCESS:
       return {
         ...state,
         entities: action.payload.data,
+        isCurrenciesLoading: false,
       };
     case GET_CURRENCIES_ERROR:
       return {
         ...state,
+        isCurrenciesLoading: false,
+        error: action.payload.err,
       };
     default:
       return state;

@@ -6,6 +6,7 @@ class AppLayout extends PureComponent {
   static propTypes = {
     children: PropTypes.element,
     getCurrencies: PropTypes.func.isRequired,
+    isCurrenciesLoading: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -19,7 +20,7 @@ class AppLayout extends PureComponent {
   render() {
     return (
       <TabsLayout>
-        {this.props.children}
+        {this.props.isCurrenciesLoading ? <div>Loading...</div> : this.props.children}
       </TabsLayout>
     );
   }

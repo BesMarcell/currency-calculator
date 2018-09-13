@@ -10,6 +10,7 @@ import Endpoints from '../constants';
 
 const mapStateToProps = ({ currencies }) => ({
   currencies: currencies.currenciesList,
+  isCurrenciesLoading: currencies.isCurrenciesLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
