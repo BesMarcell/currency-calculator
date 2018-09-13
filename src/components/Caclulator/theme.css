@@ -1,3 +1,37 @@
-.caclulator {
+@import '../../variables.css';
 
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+}
+
+.selectCurrency {
+  font-family: var(--preferred-font);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  min-width: 100px !important;
+}
+
+.textField {
+  min-width: 100px !important;
+  padding-right: 10px !important;
+}
+
+@media screen and (max-width: 800px) {
+  .calculator {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+  }
 }
