@@ -6,7 +6,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import store from './store/configureStore';
 import './common.css';
 
-import AppLayout from './containers/AppLayout';
+import AppLayout from './components/AppLayout';
 import Calculator from './containers/Calculator';
 import СurrenciesTable from './containers/СurrenciesTable';
 

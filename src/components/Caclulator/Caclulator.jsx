@@ -2,12 +2,15 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import formContolsId from './constants';
+import { TODAY } from '../../constants';
 import theme from './theme.css';
 
 class Caclulator extends PureComponent {
   static propTypes = {
     currencyAbbrs: PropTypes.array.isRequired,
     currencies: PropTypes.array.isRequired,
+    getCurrencies: PropTypes.func.isRequired,
+    isCurrenciesLoading: PropTypes.bool.isRequired,
   };
 
   state = {
@@ -17,6 +20,10 @@ class Caclulator extends PureComponent {
     secondCurrency: '',
     firstCurrencyMedianRate: 1,
     secondCurrencyMedianRate: 1,
+  }
+
+  componentDidMount() {
+    this.props.getCurrencies(TODAY);
   }
 
   setMedianRate = (selectedCurrency, currencyId) => {
@@ -68,75 +75,81 @@ class Caclulator extends PureComponent {
     const { firstValue, secondValue, firstCurrency, secondCurrency } = this.state;
     const { currencyAbbrs } = this.props;
     return (
-      <div className={theme.calculator}>
-        <div className={theme.section}>
-          <TextField
-            id={formContolsId.firstValue}
-            value={firstValue}
-            onChange={this.handleChangeValue}
-            type="number"
-            error={false}
-            className={theme.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            margin="normal"
-          />
-          <TextField
-            id={formContolsId.firstCurrency}
-            select
-            className={theme.selectCurrency}
-            value={firstCurrency.label}
-            onChange={this.handleChangeCurrency}
-            SelectProps={{
-              native: true,
-              MenuProps: {
-                className: theme.select,
-              },
-            }}
-            margin="normal"
-          >
-            {currencyAbbrs.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </TextField>
-        </div>
-        <div className={theme.section}>
-          <TextField
-            id={formContolsId.secondValue}
-            value={secondValue}
-            onChange={this.handleChangeValue}
-            type="number"
-            error={false}
-            className={theme.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            margin="normal"
-          />
-          <TextField
-            id={formContolsId.secondCurrency}
-            select
-            className={theme.selectCurrency}
-            value={secondCurrency.label}
-            onChange={this.handleChangeCurrency}
-            SelectProps={{
-              native: true,
-              MenuProps: {
-                className: theme.select,
-              },
-            }}
-            margin="normal"
-          >
-            {currencyAbbrs.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </TextField>
-        </div>
+      <div>
+        {this.props.isCurrenciesLoading
+          ? <div>Loading...</div>
+          : (
+            <div className={theme.calculator}>
+              <div className={theme.section}>
+                <TextField
+                  id={formContolsId.firstValue}
+                  value={firstValue}
+                  onChange={this.handleChangeValue}
+                  type="number"
+                  error={false}
+                  className={theme.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                />
+                <TextField
+                  id={formContolsId.firstCurrency}
+                  select
+                  className={theme.selectCurrency}
+                  value={firstCurrency.label}
+                  onChange={this.handleChangeCurrency}
+                  SelectProps={{
+                    native: true,
+                    MenuProps: {
+                      className: theme.select,
+                    },
+                  }}
+                  margin="normal"
+                >
+                  {currencyAbbrs.map(option => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </TextField>
+              </div>
+              <div className={theme.section}>
+                <TextField
+                  id={formContolsId.secondValue}
+                  value={secondValue}
+                  onChange={this.handleChangeValue}
+                  type="number"
+                  error={false}
+                  className={theme.textField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                />
+                <TextField
+                  id={formContolsId.secondCurrency}
+                  select
+                  className={theme.selectCurrency}
+                  value={secondCurrency.label}
+                  onChange={this.handleChangeCurrency}
+                  SelectProps={{
+                    native: true,
+                    MenuProps: {
+                      className: theme.select,
+                    },
+                  }}
+                  margin="normal"
+                >
+                  {currencyAbbrs.map(option => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </TextField>
+              </div>
+            </div>
+          )}
       </div>
     );
   }
