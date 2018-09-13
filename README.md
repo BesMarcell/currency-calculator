@@ -17,4 +17,4 @@ $ yarn install
 ```
 $ yarn start
 ```
-4. Navigate to `https://localhost:3333/`
+4. Navigate to <https://localhost:3333/>
