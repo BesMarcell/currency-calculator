@@ -6,9 +6,9 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import store from './store/configureStore';
 import './common.css';
 
-import AppLayout from './components/AppLayout/AppLayout';
-import Calculator from './components/Caclulator';
-import СurrenciesTable from './components/СurrenciesTable';
+import AppLayout from './containers/AppLayout';
+import Calculator from './containers/Calculator';
+import СurrenciesTable from './containers/СurrenciesTable';
 
 ReactDOM.render(
   <Provider store={store}>
