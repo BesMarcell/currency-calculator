@@ -7,7 +7,7 @@
 # Getting started
 1. Clone repo:
 ```
-$ git clone https://github.com/***.git
+$ git clone https://github.com/BesMarcell/currency-calculator.git
 ```
 2. Install dependencies:
 ```
