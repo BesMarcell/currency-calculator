@@ -1,3 +1,7 @@
-.сurrenciesTable {
+@import '../../variables.css';
 
+.сurrenciesTable {
+  font-family: var(--preferred-font);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
 }
