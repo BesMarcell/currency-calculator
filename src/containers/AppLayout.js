@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   getCurrencies: (date) => {
     dispatch({ type: GET_CURRENCIES_PENDING });
     jsonp(
-      `${Endpoints.BASE_URL}/${Endpoints.DAILY}/?${Endpoints.DATE}=${date}`,
+      `${Endpoints.BASE_URL}/${Endpoints.tDAILY}/?${Endpoints.DATE}=${date}`,
       null,
       (err, data) => {
         if (err) {
