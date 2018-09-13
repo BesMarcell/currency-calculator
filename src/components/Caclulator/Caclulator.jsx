@@ -60,13 +60,13 @@ class Caclulator extends PureComponent {
   }
 
   calculator = (changed, value, firstCurrencyMedianRate, secondCurrencyMedianRate) => {
-    if (changed === formContolsId.firstValue || changed === formContolsId.firstCurrency) {
+    if (changed === formContolsId.secondValue) {
       this.setState({
-        secondValue: (value * (secondCurrencyMedianRate / firstCurrencyMedianRate)).toFixed(2),
+        firstValue: (value * (firstCurrencyMedianRate / secondCurrencyMedianRate)).toFixed(2),
       });
     } else {
       this.setState({
-        firstValue: (value * (firstCurrencyMedianRate / secondCurrencyMedianRate)).toFixed(2),
+        secondValue: (value * (secondCurrencyMedianRate / firstCurrencyMedianRate)).toFixed(2),
       });
     }
   }
