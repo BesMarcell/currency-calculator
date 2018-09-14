@@ -5,30 +5,37 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { withStyles } from '@material-ui/core/styles';
 import getToday from '../../utils/getToday';
-import theme from './theme.css';
+import styles from './styles';
 
 class СurrenciesTable extends PureComponent {
   static propTypes = {
     currencies: PropTypes.array.isRequired,
     getCurrencies: PropTypes.func.isRequired,
     isCurrenciesLoading: PropTypes.bool.isRequired,
+    classes: PropTypes.object,
   };
+
+  static defaultProps = {
+    classes: {},
+  }
 
   componentDidMount() {
     this.props.getCurrencies(getToday());
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className={theme.сurrenciesTable}>
+      <div>
         {this.props.isCurrenciesLoading
           ? <div>Loading...</div>
           : (
-            <Table>
+            <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell>Currency_code</TableCell>
+                  <TableCell>Currency code</TableCell>
                   <TableCell>Buying rate</TableCell>
                   <TableCell>Selling rate</TableCell>
                   <TableCell>Median rate</TableCell>
@@ -54,4 +61,4 @@ class СurrenciesTable extends PureComponent {
   }
 }
 
-export default СurrenciesTable;
+export default withStyles(styles)(СurrenciesTable);

@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 import formContolsId from './constants';
 import getToday from '../../utils/getToday';
-import theme from './theme.css';
+import styles from './styles';
+import customTheme from './theme.css';
 
 class Caclulator extends PureComponent {
   static propTypes = {
@@ -11,7 +13,12 @@ class Caclulator extends PureComponent {
     currencies: PropTypes.array.isRequired,
     getCurrencies: PropTypes.func.isRequired,
     isCurrenciesLoading: PropTypes.bool.isRequired,
+    classes: PropTypes.object,
   };
+
+  static defaultProps = {
+    classes: {},
+  }
 
   state = {
     firstValue: 1,
@@ -73,21 +80,26 @@ class Caclulator extends PureComponent {
 
   render() {
     const { firstValue, secondValue, firstCurrency, secondCurrency } = this.state;
-    const { currencyAbbrs } = this.props;
+    const { currencyAbbrs, classes } = this.props;
     return (
       <div>
         {this.props.isCurrenciesLoading
           ? <div>Loading...</div>
           : (
-            <div className={theme.calculator}>
-              <div className={theme.section}>
+            <div className={customTheme.calculator}>
+              <div className={customTheme.section}>
                 <TextField
                   id={formContolsId.firstValue}
                   value={firstValue}
                   onChange={this.handleChangeValue}
                   type="number"
                   error={false}
-                  className={theme.textField}
+                  InputProps={{
+                    classes: {
+                      input: classes.customFont,
+                    },
+                  }}
+                  className={classes.textField}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -96,13 +108,18 @@ class Caclulator extends PureComponent {
                 <TextField
                   id={formContolsId.firstCurrency}
                   select
-                  className={theme.selectCurrency}
+                  className={classes.textField}
                   value={firstCurrency.label}
                   onChange={this.handleChangeCurrency}
+                  InputProps={{
+                    classes: {
+                      input: classes.customFont,
+                    },
+                  }}
                   SelectProps={{
                     native: true,
                     MenuProps: {
-                      className: theme.select,
+                      className: classes.textField,
                     },
                   }}
                   margin="normal"
@@ -114,14 +131,19 @@ class Caclulator extends PureComponent {
                   ))}
                 </TextField>
               </div>
-              <div className={theme.section}>
+              <div className={customTheme.section}>
                 <TextField
                   id={formContolsId.secondValue}
                   value={secondValue}
                   onChange={this.handleChangeValue}
                   type="number"
                   error={false}
-                  className={theme.textField}
+                  InputProps={{
+                    classes: {
+                      input: classes.customFont,
+                    },
+                  }}
+                  className={classes.textField}
                   InputLabelProps={{
                     shrink: true,
                   }}
@@ -130,13 +152,18 @@ class Caclulator extends PureComponent {
                 <TextField
                   id={formContolsId.secondCurrency}
                   select
-                  className={theme.selectCurrency}
+                  className={classes.textField}
                   value={secondCurrency.label}
                   onChange={this.handleChangeCurrency}
+                  InputProps={{
+                    classes: {
+                      input: classes.customFont,
+                    },
+                  }}
                   SelectProps={{
                     native: true,
                     MenuProps: {
-                      className: theme.select,
+                      className: classes.textField,
                     },
                   }}
                   margin="normal"
@@ -155,4 +182,4 @@ class Caclulator extends PureComponent {
   }
 }
 
-export default Caclulator;
+export default withStyles(styles)(Caclulator);
