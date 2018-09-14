@@ -4,6 +4,4 @@ const Endpoints = {
   DATE: 'date',
 };
 
-export const TODAY = new Date().toISOString().substring(0, 10);
-
 export default Endpoints;

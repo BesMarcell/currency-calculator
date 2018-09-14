@@ -5,7 +5,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { TODAY } from '../../constants';
+import getToday from '../../utils/getToday';
 import theme from './theme.css';
 
 class СurrenciesTable extends PureComponent {
@@ -16,7 +16,7 @@ class СurrenciesTable extends PureComponent {
   };
 
   componentDidMount() {
-    this.props.getCurrencies(TODAY);
+    this.props.getCurrencies(getToday());
   }
 
   render() {

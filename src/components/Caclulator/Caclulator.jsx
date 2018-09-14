@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import formContolsId from './constants';
-import { TODAY } from '../../constants';
+import getToday from '../../utils/getToday';
 import theme from './theme.css';
 
 class Caclulator extends PureComponent {
@@ -23,7 +23,7 @@ class Caclulator extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.getCurrencies(TODAY);
+    this.props.getCurrencies(getToday());
   }
 
   setMedianRate = (selectedCurrency, currencyId) => {

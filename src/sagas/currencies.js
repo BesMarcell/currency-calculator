@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
-import connectors from '../api/currencies';
+import currencies from '../api/currencies';
 
 import {
   GET_CURRENCIES_PENDING,
@@ -10,7 +10,7 @@ import {
 
 function* getCurriencies({ payload = {} }) {
   try {
-    const entities = yield call(connectors.getAllAdapter, payload.date);
+    const entities = yield call(currencies.getAllAdapter, payload.date);
     yield put({
       type: GET_CURRENCIES_SUCCESS,
       payload: { data: entities },

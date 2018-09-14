@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 import Endpoints from '../constants';
 
-const connectors = {
+const currencies = {
   getAllAdapter: date => (
     new Promise((resolve, reject) => {
       jsonp(
@@ -18,4 +18,4 @@ const connectors = {
   ),
 };
 
-export default connectors;
+export default currencies;
