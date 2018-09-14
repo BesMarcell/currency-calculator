@@ -7,7 +7,7 @@ const styles = () => ({
     minWidth: 200,
   },
   customFont: {
-    fontSize: '1em',
+    fontSize: '0.8em',
     fontFamily: 'Open Sans, sans-serif',
   },
 });
